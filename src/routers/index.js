@@ -8,7 +8,7 @@ import mineRouter from "./mine/index";
 Vue.use(VueRouter)
 
 
-console.log(movieRouter)
+
 export default new VueRouter({
     routes:[
     movieRouter,

@@ -11,6 +11,8 @@ import store  from './vuex/store'
 
 import 'lib-flexible/flexible.js'
 //注册插件
+
+import 'animate.css'
 Vue.use(plugins)
 
 
