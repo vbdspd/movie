@@ -41,15 +41,18 @@ export default {
       city: "选择地区",
 
       // 设置本地存储以防页面刷新时底部滑动条和路由不一致
-      active: Number(localStorage.getItem("active")), //控制底部滑动条的位置
+      active: Number(localStorage.getItem("movieactive")), //控制底部滑动条的位置
     };
   },
 
   watch: {
     active(newVal, oldValue) {
-      localStorage.setItem("active", newVal);
+      localStorage.setItem("movieactive", newVal);
     },
   },
+  activated(){
+    this.active=1;
+  }
 };
 </script>
   

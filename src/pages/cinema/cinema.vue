@@ -1,16 +1,17 @@
 <template>
   <div>
     <Header title="MC影院"></Header>
-    <van-tabs v-model="active">
+    <van-tabs v-model="active" :before-change="beforeChange">
       <van-tab :title="city" to="/cinema/localCity"> </van-tab>
       <van-tab :title="brand" to="/cinema/brand"></van-tab>
       <van-tab :title="select" to="/cinema/select"></van-tab>
     </van-tabs>
 
-    <keep-alive>
-      <router-view> </router-view>
-    </keep-alive>
-
+    <div class="content" v-show="isShow">
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
+    </div>
     <CiList> </CiList>
     <Footer></Footer>
   </div>
@@ -38,10 +39,33 @@ export default {
       city: "全城",
       brand: "品牌",
       select: "筛选",
+      active: Number(sessionStorage.getItem("active")),
+      isShow: true,
     };
+  },
+  watch: {
+    active(newVal, oldValue) {
+      sessionStorage.setItem("active", newVal);
+    },
+  },
+  methods: {
+    beforeChange(index) {
+      if (index == this.active) {
+        this.isShow = !this.isShow;
+      } else {
+        this.isShow = true;
+        return true;
+      }
+    },
   },
 };
 </script>
 
-<style>
+<style lang="less" scoped>
+.content {
+  width: 10rem;
+  position: absolute;
+  left: 0;
+}
 </style>
+

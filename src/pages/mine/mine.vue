@@ -1,7 +1,11 @@
 <template>
     <div>
         <Header title="个人中心"></Header>
-        <Login></Login>
+        <keep-alive>
+            <router-view>
+            
+           </router-view>
+        </keep-alive>
         <Footer></Footer>
     </div>
 </template>
